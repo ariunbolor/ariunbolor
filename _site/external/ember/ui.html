@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<!-- define single page app -->
+<html ng-app="spaApp">
+
+<head>
+  <!-- SCROLLS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+  <!-- SPELLS -->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- define angular controller -->
+<body ng-controller="mainController">
+	<!-- The main fixed container -->
+	<div id="main">
+		<div class="container">
+			<div class="row">
+				<h1>App Theme for iPad</h1>
+				<h4>ANGULAR ROUTING AND TEMPLATING EXAMPLE</h4>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+		        <nav class="spa-nav">
+		          <a class="spa-nav-item active" href="#">Home</a>
+		          <a class="spa-nav-item" href="#doc">Documents</a>
+		          <a class="spa-nav-item" href="#download">Download</a>
+		          <a class="spa-nav-item" href="#contact">Contact</a>
+		          <a class="spa-nav-item pull-right" >Angular Routing and Templating Example</a>
+		    </div>
+
+			<div class="row" style="background: #fff;">				
+				<div class="col-md-3 spa-sidebar">
+		          <div class="sidebar-module sidebar-module-inset">
+		            <h4>What is SPA?</h4>
+		            <p>In modern web developement <em>SPA</em> is defined Single Page Application.</p>
+		          </div>
+		          <div class="sidebar-module">
+		            <ul class="sub-menu nav">
+		              <li><a href="#typography">Typography</a></li>
+		              <li><a href="#form">Form elements</a></li>
+		              <li><a href="#icons">Icons</a></li>
+		              <li><a href="#table">Table</a></li>
+		            </ul>
+		          </div>
+		          <div class="sidebar-module">
+					  <div>
+						  <!-- -->
+					  </div>
+		          </div>
+		        </div><!-- /.blog-sidebar -->
+				
+				<div class="col-md-9 spa-main">
+				    <!-- angular templating -->
+					<!-- this is where content will be injected -->
+					<div ng-view></div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+  
+</body>
+</html>
