@@ -57,7 +57,7 @@
     // create the controller and inject Angular's $scope
     spaApp.controller('mainController', function($scope) {
         // create a message to display in our view
-        $scope.title = 'Everyone come and see how good I look!';
+        $scope.title = 'This the Home page!';
     });
 
     spaApp.controller('docController', function($scope) {
