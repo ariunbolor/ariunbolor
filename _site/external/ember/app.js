@@ -1,5 +1,6 @@
+'use strict';
 // create the module and name it scotchApp
-    var spaApp = angular.module('spaApp', ['ngRoute']);
+    var spaApp = angular.module('spaApp', ['ngRoute', 'firebase']);
 
     // configure our routes
     spaApp.config(function($routeProvider) {
@@ -42,9 +43,9 @@
             })
             
             // route for the download page
-            .when('/table', {
-                templateUrl : 'pages/table.html',
-                controller  : 'tableController'
+            .when('/firebase', {
+                templateUrl : 'pages/firebase.html',
+                controller  : 'firebaseController'
             })
 
             // route for the contact page
@@ -80,9 +81,49 @@
         $scope.title = 'Icons';
     });
     
-    spaApp.controller('tableController', function($scope) {
-        $scope.title = 'Table elements';
+    
+    spaApp.controller('firebaseController', function($scope, $firebase) {
+		$scope.title = 'Angularjs + Firebase';
+		
+		//var ref = new Firebase('URL');
+		//$scope.data = (ref);
+		
+    	var ref = new Firebase("https://luminous-fire-2217.firebaseio.com");
+    	$scope.messages = $firebase(ref);
+    	$scope.addMessage = function(e){
+          	if(e.keyCode != 13) return;
+	    	$scope.messages.$add({from: $scope.name, body: $scope.msg});
+			$scope.msg = "";
+    	}
+    	$scope.writeID = function(o){
+		  console.log(o.$id);
+		}
+    	//Additional functions following API documentation
+    	/*
+    	$scope.delMessage = function(e){
+    		$scope.messages.$remove();
+    		}
+    	*/	
+    	$scope.deleMessage = function(msg){
+		  var itemRef = new Firebase(url + '/' + msg);
+		  itemRef.remove();
+		}
+    	
     });
+    
+    /*
+    function firebaseController($scope, $firebase) {
+        $scope.title = 'Angularjs + Firebase';
+        var ref = new Firebase("https://luminous-fire-2217.firebaseio.com");
+        $scope.messages = $firebase(ref);
+
+        $scope.addMessage = function(e) {
+          if (e.keyCode != 13) return;
+	    	$scope.messages.$add({from: $scope.name, body: $scope.msg});
+          $scope.msg = "";
+        };
+      }
+     */
     spaApp.controller('contactController', function($scope) {
         $scope.title = 'Contact';
     });

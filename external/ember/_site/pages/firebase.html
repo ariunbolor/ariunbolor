@@ -1,0 +1,21 @@
+ <div class="spa-post">
+    <h2 class="spa-post-title">{{title | uppercase}}</h2>
+    <p class="spa-post-meta">If you're not familiar with Firebase? Please <a href="http://www.firebase.com" target="_blank">Check their web site</a> <br> You can find the data source from https://luminous-fire-2217.firebaseio.com</p><p>Please try it by yourself, and feel it how fast it it is.
+    <form name="spaForm">
+      <input type="text" ng-model="name" placeholder="Name" name="name" required>
+      <span class="error label label-default" ng-show="spaForm.name.$error.required">
+      Required!</span><br><br>
+    <input type="text" ng-model="msg" name="msg" ng-keydown="addMessage($event)" placeholder="Message..." ng-minlength="10" ng-maxlength="150">
+        <span class="error label label-default" ng-show="spaForm.msg.$error.minlength">
+      Too short!</span>
+    <span class="error label label-default" ng-show="spaForm.msg.$error.maxlength">
+      Too long!</span><br>
+    </form>
+    
+    <p>Comments</p>
+     <div class="alert alert-info" ng-repeat="msg in messages | orderBy : reverse = 'true'">
+               <span class="glyphicon glyphicon-user"></span> <strong>{{msg.from}} says</strong>
+                <hr class="message-inner-separator">
+                <p>{{msg.body}}</p>
+     </div    
+</div><!-- /.page-contentt -->

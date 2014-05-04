@@ -1,7 +1,22 @@
-// create the module and name it scotchApp
-    var spaApp = angular.module('spaApp', ['ngRoute']);
+'use strict';
 
-    // configure our routes
+	// spaApp module created with 2 dependencies including ngRoute and firebase
+    var spaApp = angular.module('spaApp', ['ngRoute', 'firebase']);
+
+	
+    // route configurations
+    
+    /* note for undertanding routeProvide
+    
+    app.config(function($routePriver){
+	    $routeProvide
+	    .when('/path', {
+			teplateUrl: 'template file',
+			controller: 'controller name'    
+	    });
+    });
+    */
+    
     spaApp.config(function($routeProvider) {
         $routeProvider
 
@@ -35,16 +50,16 @@
                 controller  : 'formController'
             })
             
-            // route for the download page
-            .when('/icons', {
-                templateUrl : 'pages/icons.html',
-                controller  : 'iconsController'
+            // route for the authentication page
+            .when('/authentication', {
+                templateUrl : 'pages/authentication.html',
+                controller  : 'authenticationController'
             })
             
-            // route for the download page
-            .when('/table', {
-                templateUrl : 'pages/table.html',
-                controller  : 'tableController'
+            // route for the firebase page
+            .when('/firebase', {
+                templateUrl : 'pages/firebase.html',
+                controller  : 'firebaseController'
             })
 
             // route for the contact page
@@ -72,17 +87,91 @@
         $scope.title = 'Typography';
     });
     
-    spaApp.controller('formController', function($scope) {
-        $scope.title = 'Form elements';
+    //Controller for XML Reader
+    
+spaApp.controller("formController", ['$scope', 'FeedService', function ($scope, Feed) {
+
+$scope.loadButonText = "Load";
+$scope.loadFeed = function (e) {
+
+	Feed.parseFeed($scope.feedSrc).then(function (res) {
+	$scope.loadButonText = angular.element(e.target).text();
+	$scope.feeds = res.data.responseData.feed.entries;
+
+});
+
+} }]); 
+
+//For repeatitive usage 
+
+spaApp.factory('FeedService', ['$http', function ($http) {
+	return {
+	parseFeed: function (url) {
+	return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&amp;num=50&amp;callback=JSON_CALLBACK&amp;q=' + encodeURIComponent(url));
+	}
+	} 
+}]); 
+
+    /*
+    
+    spaApp.controller('formController', ['$scope','FeedService', function ($scope,Feed) { 
+        $scope.title = 'RSS Reader';
+          $scope.loadButonText="Select source";
+			    $scope.loadFeed=function(e){        
+			        Feed.parseFeed($scope.feedSrc).then(function(res){
+			            $scope.loadButonText=angular.element(e.target).text();
+			            $scope.feeds=res.data.responseData.feed.entries;
+			        });
+			    }
+			}]);
+			
+spaApp.factory('FeedService',['$http',function($http){
+    return {
+        parseFeed : function(url){
+            return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+        }
+    }
+}]);
+    */
+    //Controller for Twitter Authentication
+    spaApp.controller('authenticationController', function($scope, $firebase) {
+		/*
+    	var followRef = new Firebase('https://angularjstodo.firebaseio.com/');
+		var auth = new FirebaseSimpleLogin(followRef, function(error, user) {
+			auth.login('twitter', {
+			  rememberMe: true;
+			});
+		});
+		*/
+        $scope.title = 'authentication';
     });
     
-    spaApp.controller('iconsController', function($scope) {
-        $scope.title = 'Icons';
+    
+    spaApp.controller('firebaseController', function($scope, $firebase) {
+		$scope.title = 'Angularjs + Firebase';
+		
+		//var ref = new Firebase('URL');
+		//$scope.data = (ref);
+		
+    	var ref = new Firebase("https://luminous-fire-2217.firebaseio.com");
+    	$scope.messages = $firebase(ref);
+    	$scope.addMessage = function(e){
+          	if(e.keyCode != 13) return;
+	    	$scope.messages.$add({from: $scope.name, body: $scope.msg});
+			$scope.msg = "";
+    	}
+    	$scope.writeID = function(o){
+		  console.log(o.$id);
+		}
+    	
+    	//Delete entire comment
+    	
+    	$scope.delMessage = function(e){
+    		$scope.messages.$remove();
+    		}
+    	
     });
     
-    spaApp.controller('tableController', function($scope) {
-        $scope.title = 'Table elements';
-    });
     spaApp.controller('contactController', function($scope) {
         $scope.title = 'Contact';
     });
