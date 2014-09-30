@@ -2,6 +2,7 @@
 layout: post
 title: "Angular JS $http service example"
 published: true
+comments: true
 ---
 
 <iframe src="/external/angularjs/index.html" width="720" height="570" style="display:block; margin: 0 auto;"></iframe>
