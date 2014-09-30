@@ -8,7 +8,7 @@ published: true
 
 I've used $http service with GET method to pull external JSON request. 
 
-{% highlight javascript %}
+{% highlight ruby %}
 var jobBoard = angular.module('jobBoard', ['ui-bootstrap']);
 	function MyAppController($scope, $http, $sce)
 	{
