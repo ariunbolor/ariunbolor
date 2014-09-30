@@ -1,4 +1,8 @@
-Markdown test
+---
+layout: post
+title: "Markdown test"
+published: true
+---
 =============
 
 lorem ipsum dollar blah blah blah 
