@@ -24,5 +24,5 @@ var jobBoard = angular.module('jobBoard', ['ui-bootstrap']);
 		$scope.nb = $filter('filter')($scope.jobs, filterExpr).length;
 	});
 	}
-{% enghighlight %}
+{% endhighlight %}
 
