@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "Angular JS $http service example"
+title: "Angular JS $http service example pulling JSON data"
 published: true
 ---
 
-<iframe src="/external/angularjs/index.html" width="720" height="570" style="display:block; margin: 0 auto;">&nbsp;</iframe>
+<iframe src="/external/angularjs/index.html" width="720" height="570" style="display:block; margin: 0 auto;"></iframe>
 
-I've used $http service with GET method to pull external JSON request. 
+This live JSON callback example using Angular JS $hhtp service. It pulls real data from GitHub job board https://jobs.github.com/. 
+
+Here is the JS Code that i've used
 
 {% highlight ruby %}
 var jobBoard = angular.module('jobBoard', ['ui-bootstrap']);
