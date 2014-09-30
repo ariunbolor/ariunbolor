@@ -1,125 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+---
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AJAX, JQUery, Angularjs, CSS3, HTML5,">
-    <meta name="author" content="Bolorerdene Bundgaa">
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">    
+      
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
-    <title>Bolorerdene Bundgaa - Experimental Interactive Projects</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <style>
-	#angular { height: 100%; width: 100%;}
-	#spa { height: 100%; width: 100%;}
-	.caseStudy {width: 960px; margin: 0 auto;
-		padding: 10px;
-	}
-    </style>
-
-</head>
-
-<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
- <section id="intro" class="intro-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Bolorerdene Bundgaa</h1>
-                    <!--<div class="page-scroll">
-                        <a class="btn btn-default" href="#about">Click me!</a>
-                    </div>-->
-                    <br>
-                    <p>You can find interactive demonstration pages when scroll down. The following interactive demos are built with Twitter bootstrap framework and AngularJS. More will be coming soon ... </p>
-               </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="angular" class="angular-section">
-		<iframe src="external/angularjs/index.html" width="100%" height="100%"></iframe>
-    </section>
-	<section id="case" class="case-section">
-       <div class="caseStudy">
-            <div class="row">
-            <div class="col-md-12">
-		<h3>Overview</h3><p>When I found the original source from codepen and it was using a hard coded Array data and filter directive for filtering the data. Then I decided to make it little challenging and to learn something from it. First step I made was read the data from attached JSON data file. It worked well. Still didn't satisfied what have done. I needed something more interesting that I don't need to write a hard coded data. So I decided to attach a external JSON data from someones server. In the process I have learnt about JSON type difference on Angularjs. started with 10 lines of code then it shrinked into one line code. It was pretty awesome practice.</p>
-            </div>
-            </div>
-            <div class="row">
-			<div class="col-md-6"><h3>Tech specs:</h3>			
-				<p>
-					Twitter bootstrap, Angularjs, HTML5, CSS3
-				</p>
-				<h3>Additional:</h3>	
-				<p>
-					ng- directives and ng- basics like app module, controller, templating etc
-				</p>
-			</div>
-			<div class="col-md-6"><h3>Solution:</h3>
-				<p>
-					I've done two step improvement done on this example. First I've converted the hard coded array data into json file and then implement into the code by following method:<br>
-					<code>
-						$http.get({'file.json'})<br>
-						.success(function(data) {...}
-					</code><br>After this step I needed to pull data from different server. Therefore needed a little change one this line<br>
-					<code>
-					$http.jsonp('URL.json?callback=JSON_CALLBACK' )<br>
-					.then( function ( response ) {..}
-					</code>
-				</p>
-			</div>
-            </div>
-       </div>
-	</section>
-    <section id="spa" class="spa-section">
-		<iframe src="external/ember/index.html" width="100%" height="100%"></iframe>
-    </section>
-
-    <section id="case" class="case-section">
-       <div class="caseStudy">
-            <div class="row">
-            <div class="col-md-12">
-		<h3>Overview</h3><p>One of my AngularJS experiment , practicing with ngRouting and template(ing). This is a interactive Single Page Application demonstration that can provide the most common AngularJS functions.</p>
-            </div>
-            </div>
-            <div class="row">
-			<div class="col-md-6"><h3>Tech specs:</h3>			
-				<p>
-					Twitter bootstrap, Angularjs, Firebase, HTML5, CSS3
-				</p>
-				<h3>Additional:</h3>	
-				<p>
-					ng- directives and ng- basics like app module, controller, templating etc
-				</p>
-			</div>
-			<div class="col-md-6"><h3>Solution:</h3>
-				<p>
-					I've created simple SPA with ng- routing. It worked well the I started adding more functional <br>
-					<code>
-						$http.get({'file.json'})<br>
-						.success(function(data) {...}
-					</code><br>After this step I needed to pull data from different server. Therefore needed a little change one this line<br>
-					<code>
-					$http.jsonp('URL.json?callback=JSON_CALLBACK' )<br>
-					.then( function ( response ) {..}
-					</code>
-				</p>
-			</div>
-            </div>
-       </div>
-    </section>
-
-    <!-- Core JavaScript Files -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-
-</body>
-
-</html>
+      <div class="entry">
+        {{ post.content | truncatewords:40}}
+      </div>
+      
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
