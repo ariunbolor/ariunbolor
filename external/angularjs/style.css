@@ -3,11 +3,10 @@
 
 body {
   font: 14px/1.4 'Noto Sans', sans-serif;
-  background: #eaf8ff;
 }
 .container, .container-fluid {
 	margin: o auto;
-	width: 960px;
+	/* width: 960px;*/
 	
 }
 .page-header {
