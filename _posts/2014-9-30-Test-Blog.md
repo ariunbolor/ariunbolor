@@ -3,7 +3,8 @@ layout: post
 title: "Markdown test"
 published: true
 ---
-=============
+
+<iframe src="/external/angularjs/index.html" width="640" height="480" style="display:block; margin: 0 auto;">&nbsp;</iframe>
 
 lorem ipsum dollar blah blah blah 
  [My Portfolio](http://www.ariunbolor.org).
