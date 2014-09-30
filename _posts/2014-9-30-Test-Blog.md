@@ -1,14 +1,16 @@
 ---
 layout: post
-title: "Angular JS $http service example pulling JSON data"
+title: "Angular JS $http service example"
 published: true
 ---
 
 <iframe src="/external/angularjs/index.html" width="720" height="570" style="display:block; margin: 0 auto;"></iframe>
 
-This live JSON callback example using Angular JS $hhtp service. It pulls real data from GitHub job board https://jobs.github.com/. 
+This live JSON callback example using Angular JS $http service. It pulls real data from GitHub job board https://jobs.github.com/. I've included Twitter Bootstrap UI framework for it's dependencies. 
+On serach field you can define job keyword or location or job type etc. 
+This example work with two piece of code that defines template and app javascript. 
 
-Here is the JS Code that i've used
+Here is the JS Code that i've created
 
 {% highlight ruby %}
 var jobBoard = angular.module('jobBoard', ['ui-bootstrap']);
