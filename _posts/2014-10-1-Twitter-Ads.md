@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Quick report on Twitter Ads usage and SEO"
+title: "Quick report on Twitter Ad usage"
 published: true
 comments: true
 ---
