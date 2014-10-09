@@ -17,7 +17,7 @@
           user: $scope.currentUser,
           text: $scope.currentText,
           email: $scope.user.email,
-          user_id: $scope.user.id
+          uid: $scope.user.uid
         };
 
         var promise = MessageService.add(newMessage);

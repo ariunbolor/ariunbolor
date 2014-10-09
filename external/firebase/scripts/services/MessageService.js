@@ -7,31 +7,16 @@
     var fireMessage = $firebase(messageRef);
     return {
       childAdded: function childAdded(cb) {
-        new Firebase(MSGURL).on('child_added', function(snapshot) {
-          var snapVal = snapshot.val();
+        fireMessage.$on('child_added', function(data) {
+          var val = data.snapshot.value;
           cb.call(this, {
-            text: snapVal.text,
-            name: snapshot.name(),
-            email: snapVal.email
+            text: val.text,
+            name: data.snapshot.name,
+            email: val.email
           });
-        }, function(error) {
-            console.log(error);
+        }, function(err) {
+          console.log(err);
         });
-        // messageRef.on('child_added', function(snapshot) {
-        //
-        // }, function(err) {
-        //   console.log(err);
-        // });
-        // fireMessage.$on('child_added', function(data) {
-        //   var val = data.snapshot.value;
-        //   cb.call(this, {
-        //     text: val.text,
-        //     name: data.snapshot.name,
-        //     email: val.email
-        //   });
-        // }, function(err) {
-        //   console.log(err);
-        // });
       },
       add: function addMessage(message) {
         return fireMessage.$add(message);

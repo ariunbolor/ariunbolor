@@ -2,14 +2,25 @@
 'use strict';
 
 angular.module('firebaseApp')
-  .controller('MainCtrl', function (MSGURL) {
+  .controller('MainCtrl', function ($scope, FBURL) {
 
-  new Firebase(MSGURL).set({ hello: 'world' }, function(error) {
-      console.log(error);
-  });
+  var fbRef = new Firebase(FBURL).child('secret');
 
-  new Firebase(MSGURL).on('child_added', function(data) { }, function(error) {
-      console.log(error);
-  });
+  fbRef.set(3);
 
 });
+
+// Apply these rules to your firebase
+// {
+//     "rules": {
+//       ".read": true,
+//       "$messages": {
+//         ".read": false,
+//         ".write": "auth !== null"
+//       },
+//       "secret": {
+//         ".write": "auth !== null && auth.email === 'david.east@outlook.com'",
+//         ".validate": "newData.isNumber()"
+//       }
+//     }
+// }
