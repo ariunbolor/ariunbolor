@@ -36,6 +36,6 @@ angular.module('firebaseApp', [
         redirectTo: '/'
       });
   })
-  .constant('FBURL', 'https://brilliant-fire-2753.firebaseio.com/')
-  .constant('MSGURL', 'https://brilliant-fire-2753.firebaseio.com/messages')
+  .constant('FBURL', 'https://brilliant-fire-694.firebaseio.com/')
+  .constant('MSGURL', 'https://brilliant-fire-694.firebaseio.com/messages')
   .constant('loginRedirectPath', '/login');
