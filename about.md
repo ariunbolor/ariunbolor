@@ -1,16 +1,7 @@
 ---
 layout: page
-title: Resume
+title: Bolorerdene Bundgaa
 ---
-Bolorerdene Bundgaa
-===============
-
-
-Objective
----------
-
-*   I'm looking for full time job position that I can grove up with the company growth and gain more experience on profession.
-
 
 Work Experience
 ---------------
